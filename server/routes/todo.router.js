@@ -62,7 +62,7 @@ router.put('/:id', (req, res) => {
     let updates = req.body;
     Todo.findByIdAndUpdate(todoId, updates, { new: true }, (err, updatedItem) => {
         if (err) {
-            console.log('Error', err);
+            console.log('Error updating item', err);
             res.sendStatus(500);
         } else {
             res.sendStatus(200);
@@ -71,17 +71,17 @@ router.put('/:id', (req, res) => {
 });
 
 //DELETE
-// router.delete('/:id', (req, res) => {
-//     let todoId = req.params.id;
-//     Todo.findByIdAndRemove(todoId, (err, itemRemoved) => {
-//             if (err) {
-//                 console.log('Error deleting item: ', err);
-//                 res.sendStatus(500);
-//             } else {
-//                 res.sendStatus(200);
-//             }
-//         })
-//     })
+router.delete('/:id', (req, res) => {
+    let todoId = req.params.id;
+    Todo.findByIdAndRemove(todoId, (err, itemRemoved) => {
+            if (err) {
+                console.log('Error deleting item: ', err);
+                res.sendStatus(500);
+            } else {
+                res.sendStatus(200);
+            }
+        })
+    })
 
 //Return our router
 module.exports = router;

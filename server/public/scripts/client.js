@@ -37,16 +37,31 @@ todoList.controller('TodoController', ['$http', function($http){
     todo.getTodo();
 
     todo.taskDone = function (taskId, status) {
-        console.log('task that is done', taskId);
+        console.log('client.js PUT mark task completed function is started', taskId);
         $http({
             method: 'PUT',
             url: '/todo/' + taskId,
             data: { taskDone: status }
         }).then(function (response) {
-            console.log('Task is now done', response);
+            console.log('Task now marked as done', response);
             todo.getTodo();
         }).catch(function (error) {
             console.log('Error', error);
         });
     }
+
+    todo.taskDelete = function (taskId) {
+        console.log('client.js DELETE task function is started', taskId);
+        $http({
+            method: 'DELETE',
+            url: '/todo/' + taskId,
+            data: { taskDone: status }
+        }).then(function (response) {
+            console.log('Task deleted', response);
+            todo.getTodo();
+        }).catch(function (error) {
+            console.log('Error', error);
+        });
+    }
+
 }]);

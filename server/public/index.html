@@ -1,55 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>todo list</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <script src="vendors/angular.min.js" charset="utf-8"></script>
-    <script src="scripts/client.js" charset="utf-8"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>todo list</title>
+
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="vendors/angular.min.js" charset="utf-8"></script>
+  <script src="scripts/client.js" charset="utf-8"></script>
+
 </head>
 <body ng-app="todoList">
-
-    <div class="container" ng-controller="TodoController as vm">
-        <h1>Things To Get Done</h1>
-       
-        <form>
-        <input type="text" placeholder="Task Name" ng-model="vm.newTask.taskName">
-        <select ng-model="vm.newTask.taskType">
-            <option>Foreign</option>
-            <option>Domestic</option>
-        </select>
+  <div class="container" ng-controller="TodoController as vm">
+   <h1>Things To Get Done</h1>
+    <form>
+    <input type="text" placeholder="Task Name" ng-model="vm.newTask.taskName">
+      <select ng-model="vm.newTask.taskType">
+        <option>Foreign</option>
+        <option>Domestic</option>
+      </select>
         <button ng-click="vm.addTask(vm.newTask)">Submit</button>
-        </form>
-
-
-        <br/>
-        <br/>
-        <table>
-            <thead>
-                <tr>
-                    <th>Task Name</th>
-                    <th>Task Type</th>
-                    <th>Task Done?</th>
-                    <th>Update Task</th>
-                    <th>Delete Task</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="task in vm.todoArray">
-                    <td>{{ task.taskName }}</td>
-                    <td>{{ task.taskType}}</td>
-                    <td>{{ task.taskDone }}</td>
-                    <td>
-                        <button>Done!</button>
-                    </td>
-                    <td><button>Delete</button></td>
-                </tr>
-            </tbody>
-        </table>
+    </form>
+    <br/><br/>
+    <table>
+      <thead>
+        <tr>
+          <th>Task Name</th>
+          <th>Task Type</th>
+          <th>Task Done?</th>
+          <th>Update Task</th>
+          <th>Delete Task</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="task in vm.todoArray" ng-class="{true: 'done', false: 'doneNot'}[task.taskDone == true]" >
+          <td>{{ task.taskName }}</td>
+          <td>{{ task.taskType}}</td>
+          <td>{{ task.taskDone }}</td>
+          <td><button ng-click="vm.taskDone(task._id,true)">Done!</button></td>
+          <td><button ng-click="vm.taskDelete(task._id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
     
-    </div>
+  </div>
     
 </body>
 </html>
