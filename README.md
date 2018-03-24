@@ -24,15 +24,8 @@ Here are the specific components for the challenge:
 
 ### HARD MODE  
 Implement Angular Material to make your app look FABULOUS.
-    "angular": "^1.6.6",
-    "angular-animate": "^1.6.6",
-    "angular-aria": "^1.6.6",
-    "angular-material": "^1.1.4",
-    "angular-messages": "^1.6.6",
-    "angular-route": "^1.6.6",
-    "express": "^4.15.4"
 
-In whatever fashion you would like, create an 'are you sure: yes / no' option when deleting a task. Once again, you can interrupt this however you would like.
+- [x] In whatever fashion you would like, create an 'are you sure: yes / no' option when deleting a task. Once again, you can interrupt this however you would like.
 
 ### STRETCH GOALS  
 Add front-end form validation to the 'make-a-task' form.
