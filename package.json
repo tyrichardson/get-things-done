@@ -1,0 +1,28 @@
+{
+  "name": "weekend3_todolist-mean",
+  "version": "1.0.0",
+  "description": "Hello Primers!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tyrichardson/Weekend3_ToDoList-MEAN.git"
+  },
+  "author": "Ty Richardson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tyrichardson/Weekend3_ToDoList-MEAN/issues"
+  },
+  "homepage": "https://github.com/tyrichardson/Weekend3_ToDoList-MEAN#readme",
+  "dependencies": {
+    "angular": "^1.6.9",
+    "angular-material": "^1.1.8",
+    "angularjs": "0.0.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.11"
+  }
+}
