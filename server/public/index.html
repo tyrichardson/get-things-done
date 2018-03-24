@@ -9,7 +9,9 @@
 
   <link rel="stylesheet" href="styles/style.css">
   <script src="vendors/angular.min.js" charset="utf-8"></script>
+  <script src="vendors/sweetalert.min.js"></script>
   <script src="scripts/client.js" charset="utf-8"></script>
+
 
 </head>
 <body ng-app="todoList">
@@ -39,10 +41,14 @@
           <td>{{ task.taskName }}</td>
           <td>{{ task.taskType}}</td>
           <td align="center">{{ task.taskDone }}</td>
-          <td align="center"><button ng-click="vm.taskDone(task._id,true)">Done!</button></td>
-          <td align="center"><button ng-click="vm.taskDelete(task._id)">Delete</button></td>
-        </tr>
+          <td align="center"><button ng-click="vm.taskDone(task._id,true)">Done!</button></td> 
+          <td align="center"><button ng-click="vm.taskDelete(task._id)">Delete</button></td>  
+
+<!--         <td align="center"><button onclick="myFunc()" ng-click="vm.taskDelete(task._id)">Delete</button></td>
+          <script>function myFunc(){confirm("Your sure?");}</script>  -->
+
       </tbody>
+    </tr>
     </table>
     
   </div>
