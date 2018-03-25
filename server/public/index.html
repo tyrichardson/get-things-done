@@ -24,20 +24,25 @@
         <link href="styles/style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
 </head>
+
 <body ng-app="todoList">
+
   <div class="container" ng-controller="TodoController as vm">
+
    <h1>Get Things Done</h1>
+
     <form>
-    <input class="formInput" type="text" placeholder="Task Name" ng-model="vm.newTask.taskName">
+      <input class="formInput" type="text" placeholder="Task Name" ng-model="vm.newTask.taskName">
       <select class="formSelect" ng-model="vm.newTask.taskType">
         <option>Foreign</option>
         <option>Domestic</option>
       </select>
-        <button class="formButton" ng-click="vm.addTask(vm.newTask)">Submit</button>
+<button type="submit" class="formButton" ng-click="vm.addTask(vm.newTask)">Submit</button>
     </form>
+
     <br/><br/>
+
     <table>
       <thead>
         <tr>
@@ -48,22 +53,20 @@
           <th>Delete</th>
         </tr>
       </thead>
+
       <tbody>
         <tr ng-repeat="task in vm.todoArray" ng-class="{true: 'done', false: 'doneNot'}[task.taskDone == true]" >
           <td>{{ task.taskName }}</td>
           <td>{{ task.taskType}}</td>
           <td align="center">{{ task.taskDone }}</td>
           <td align="center"><button ng-click="vm.taskDone(task._id,true)">Done!</button></td> 
-          <td align="center"><button ng-click="vm.taskDelete(task._id)">Delete</button></td>  
-
-<!--         <td align="center"><button onclick="myFunc()" ng-click="vm.taskDelete(task._id)">Delete</button></td>
-          <script>function myFunc(){confirm("Your sure?");}</script>  -->
-
+          <td align="center"><button ng-click="vm.taskDelete(task._id)">Delete</button></td>
+        </tr>
       </tbody>
-    </tr>
+
     </table>
     
-  </div>
+  </div><!--end of container div -->
     
 </body>
 </html>
