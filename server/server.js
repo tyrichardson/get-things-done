@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+
+//mongodb://<dbuser>:<dbpassword>@ds121665.mlab.com:21665/hadar-prime
+
 //if on Heroku, us port 4001; otherwise, use 5000
 const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
@@ -10,7 +13,10 @@ app.use(bodyParser.json());
 const todoRouter = require('./routes/todo.router');
 
 const mongoose = require('mongoose');
-const databaseUrl = 'mongodb://localhost:27017/hadar';
+const databaseURL = 'mongodb://localhost:27017/hadar';
+const databaseURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/hadar-prime';
+
+mongoose.connect(databaseURL);
 
 mongoose.connect(databaseUrl);
 mongoose.connection.on('connected', () => {
