@@ -1,6 +1,12 @@
 console.log('js is loaded');
 
+//const app = angular.module('ToDoApp', []); //"ToDoApp" is name of ng-app
 const todoList = angular.module('todoList', []);
+
+//app.controller('ToDoController', ['$http', function($http) {
+//let self = this;
+//self.todoArray = [];
+//"ToDoController as vm" is name of ng-controller; worm hole to DOM
 
 todoList.controller('TodoController', ['$http', function($http){
     console.log('todoController is loaded');
@@ -9,24 +15,9 @@ todoList.controller('TodoController', ['$http', function($http){
 
     todo.todoArray = [];
 
-    //POST
-    todo.addTask = function(newTask) {
-        console.log('inside addTask', newTask);
-        $http({
-            method: 'POST',
-            url: '/todo',  
-            data: newTask
-        }).then(function(response){
-            console.log('POST response', response);
-            todo.getTodo();
-        }).catch(function(error){
-            console.log('Error in POST', error);
-        });
-    }
-    
     //GET
     todo.getTodo = function () {
-        $http({  
+        $http({
             method: 'GET',
             url: '/todo'
         }).then(function (response) {
@@ -38,6 +29,24 @@ todoList.controller('TodoController', ['$http', function($http){
     }
     todo.getTodo();
 
+    //POST
+    todo.addTask = function(newTask) {
+        console.log('inside addTask', newTask);
+    //takes input value and passes it to router...to db
+        $http({
+            method: 'POST',
+            url: '/todo',  
+            data: newTask
+        }).then(function(response){
+            console.log('POST response', response);
+            todo.getTodo();
+            todo.newTask.taskName = '';
+            todo.newTask.taskType = '';
+        }).catch(function(error){
+            console.log('Error in POST', error);
+        });
+    }
+    
     //PUT
     todo.taskDone = function (taskId, status) {
         console.log('client.js PUT mark task completed function is started', taskId);
@@ -92,7 +101,7 @@ todoList.controller('TodoController', ['$http', function($http){
                         console.log('Error in deleting entry', error);
                     })
                 }
-            });
+         });
 
     }
 

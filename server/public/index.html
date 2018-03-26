@@ -11,14 +11,14 @@
         <link href="vendors/angular-material.css" rel="stylesheet" type="text/css">
         <script src="vendors/angular-animate.min.js" charset="utf-8"></script>
         <script src="vendors/angular-aria.min.js" charset="utf-8"></script>
-        <!-- <script src="vendors/angular-messages.min.js" charset="utf-8"></script> -->
+        <script src="vendors/angular-messages.min.js" charset="utf-8"></script>
         <script src="vendors/angular-material.min.js" charset="utf-8"></script>
         
         <!-- Client Side -->
-        <script src="vendors/sweetalert.min.js"></script>
-        <script src="scripts/client.js" charset="utf-8"></script>
-        <script src="scripts/material.controller.js" charset="utf-8"></script>
 
+        <script src="scripts/client.js" charset="utf-8"></script>
+        <script src="vendors/sweetalert.min.js"></script>
+        <script src="scripts/material.controller.js" charset="utf-8"></script>
         
         <!-- CSS -->
         <link href="styles/style.css" rel="stylesheet" type="text/css">
@@ -34,6 +34,7 @@
 
     <form>
       <input class="formInput" type="text" placeholder="Task Name" ng-model="vm.newTask.taskName">
+      <!-- ng-model is the worm hole to client.js; this runs the addTask function, passing the input value as the argument to the newTask parameter -->
       <select class="formSelect" ng-model="vm.newTask.taskType">
         <option>Foreign</option>
         <option>Domestic</option>

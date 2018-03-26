@@ -4,29 +4,12 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let todoSchema = new Schema({
-    taskName: {type: String, default: "Do Dishes"},
+    taskName: {type: String, default: "Default value"},
     taskType: {type: String, default: "Domestic"},
     taskDone: {type: Boolean, default: false}
 });
 
 let Todo = mongoose.model('todo', todoSchema);
-
-// POST
-router.post('/', (req, res) => {
-    console.log('POST /todo', req.body);
-    let todoObject = req.body;
-    let todoToAdd = new Todo(todoObject);
-   
-    todoToAdd.save((err, savedTodo) => {
-        if (err) {
-            console.log('mongodb error', err);
-            res.sendStatus(500);
-        } else {
-            console.log('Saved todo', savedTodo);
-            res.sendStatus(201);
-        }
-    });
-});
 
 // GET
 router.get('/', (req, res) => {
@@ -43,7 +26,24 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET
+// POST
+router.post('/', (req, res) => {
+    console.log('POST /todo', req.body);
+    let todoObject = req.body;
+    let todoToAdd = new Todo(todoObject);
+
+    todoToAdd.save((err, savedTodo) => {
+        if (err) {
+            console.log('mongodb error', err);
+            res.sendStatus(500);
+        } else {
+            console.log('Saved todo', savedTodo);
+            res.sendStatus(201);
+        }
+    });
+});
+
+// GET by id
 router.get('/:id', (req, res) => {
     console.log('GET todo by id');
     Todo.findOne({ _id: req.params.id }, (err, foundTodo) => {
@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-//PUT
+//PUT by id
 router.put('/:id', (req, res) => {
     let todoId = req.params.id;
     let updates = req.body;
@@ -70,7 +70,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-//DELETE
+//DELETE by id
 router.delete('/:id', (req, res) => {
     let todoId = req.params.id;
     Todo.findByIdAndRemove(todoId, (err, itemRemoved) => {

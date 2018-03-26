@@ -46,3 +46,7 @@ tbody {
 th, td {
     padding: 5px;
 }
+
+button {
+    border-radius: 25%;
+}
