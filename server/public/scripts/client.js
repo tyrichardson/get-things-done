@@ -8,7 +8,7 @@ const todoList = angular.module('todoList', []);
 //self.todoArray = [];
 //"ToDoController as vm" is name of ng-controller; worm hole to DOM
 
-todoList.controller('TodoController', ['$http', function($http){
+todoList.controller('TodoController', ['$http', function($http){}
     console.log('todoController is loaded');
 
     let todo = this;
