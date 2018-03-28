@@ -29,7 +29,7 @@ if(process.env.MONGODB_URI != undefined) {
 }
 
 //Connect to Mongo DB
-mongoose.connect(databaseUrl, {
+mongoose.connect(mongoURI, {
     useMongoClient: true
 });
 
