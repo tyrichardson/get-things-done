@@ -4,7 +4,7 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let todoSchema = new Schema({
-    taskName: {type: String, default: "Default value"},
+    taskName: {type: String},
     taskType: {type: String, default: "Domestic"},
     taskDone: {type: Boolean, default: false}
 });

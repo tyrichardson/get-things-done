@@ -7,6 +7,7 @@ const TodoController = function ($http) {
   todo.taskName = "";
   todo.taskType = "";
   todo.types = ["Domestic", "Foreign"];
+  todo.required = true;
 
   //GET
   todo.getTodo = function () {
@@ -26,6 +27,9 @@ const TodoController = function ($http) {
 
   //POST
   todo.addTask = function () {
+    if (!todo.taskName) {
+      alert("Type a task name.")
+    } else {
     let object = {"taskName": todo.taskName, "taskType": todo.taskType};
     console.log("inside addTask", object);
     //takes input value and passes it to router...to db
@@ -44,6 +48,7 @@ const TodoController = function ($http) {
         console.log("Error in POST", error);
       });
   };
+};
 
   //PUT
   todo.taskDone = function (taskId, status) {

@@ -34,10 +34,11 @@
      <md-toolbar class="md-hue-2 md-medium-tall">
        <h1>Get Things Done</h1>
      </md-toolbar>
+
      <form class="md-form" layout="row">
        <md-input-container flex="55">
          <label>Task Name</label>
-         <input type="text" ng-model="vm.taskName">
+         <input type="text" ng-model="vm.taskName" required="vm.required">
        </md-input-container>
        <md-input-container flex="30">
          <label>Type</label>
@@ -49,18 +50,8 @@
          <md-button type="submit" class="md-hue-2" ng-click="vm.addTask()">Submit</md-button>
        </div>
      </form>
-     <table>
-       <thead>
-         <tr>
-           <th>Task</th>
-           <th>Type</th>
-           <th>Done?</th>
-           <th>Update</th>
-           <th>Delete</th>
-         </tr>
-       </thead>
 
-       <!-- ng-class="{true: md-primary, false: md-accent}[task.taskDone == true]"> -->
+     <table>
 
        <tbody>
          <tr ng-repeat="task in vm.todoArray" ng-class="task.taskDone == true ? 'done' : 'doneNot'">
