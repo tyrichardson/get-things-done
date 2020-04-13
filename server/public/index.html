@@ -54,7 +54,7 @@
      <table>
 
        <tbody>
-         <tr ng-repeat="task in vm.todoArray" ng-class="task.taskDone == true ? 'done' : 'doneNot'">
+         <tr ng-repeat="task in vm.todoArray" ng-class="task.taskDone == 'done' ? 'done' : 'doneNot'">
            <td>{{ task.taskName }}</td>
            <td>{{ task.taskType}}</td>
            <td>{{ task.taskDone }}</td>

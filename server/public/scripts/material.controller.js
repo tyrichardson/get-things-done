@@ -17,6 +17,13 @@ const TodoController = function ($http) {
     })
       .then(function (response) {
         console.log("GET response", response);
+        for (task of response.data) {
+          if (task.taskDone == true) {
+            task.taskDone = "done";
+          } else {
+            task.taskDone = "not done yet";
+          }
+        }
         todo.todoArray = response.data;
       })
       .catch(function (error) {
@@ -28,27 +35,27 @@ const TodoController = function ($http) {
   //POST
   todo.addTask = function () {
     if (!todo.taskName) {
-      alert("Type a task name.")
+      alert("Type a task name.");
     } else {
-    let object = {"taskName": todo.taskName, "taskType": todo.taskType};
-    console.log("inside addTask", object);
-    //takes input value and passes it to router...to db
-    $http({
-      method: "POST",
-      url: "/todo",
-      data: object,
-    })
-      .then(function (response) {
-        console.log("POST response", response);
-        todo.getTodo();
-        todo.taskName = "";
-        todo.taskType = "";
+      let object = { taskName: todo.taskName, taskType: todo.taskType };
+      console.log("inside addTask", object);
+      //takes input value and passes it to router...to db
+      $http({
+        method: "POST",
+        url: "/todo",
+        data: object,
       })
-      .catch(function (error) {
-        console.log("Error in POST", error);
-      });
+        .then(function (response) {
+          console.log("POST response", response);
+          todo.getTodo();
+          todo.taskName = "";
+          todo.taskType = "";
+        })
+        .catch(function (error) {
+          console.log("Error in POST", error);
+        });
+    }
   };
-};
 
   //PUT
   todo.taskDone = function (taskId, status) {
